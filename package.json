@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "NamasteReact",
   "scripts": {
-    "start":"parcel index.html",
-    "build":"build index.html",
+    "start": "parcel index.html",
+    "build": "build index.html",
     "test": "jest"
   },
   "repository": {
@@ -24,7 +24,7 @@
     "parcel": "^2.15.2"
   },
   "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }

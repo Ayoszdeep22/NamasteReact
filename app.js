@@ -1,24 +1,83 @@
-/**
- * 
- * <div id="parent">
- * <div id ="child">
- * <h1>this is the heading tag</h1>
- * <h2>this is the heading 2 tag</h2>
- * </div>
- *  <div id ="child2">
- * <h1>this is the heading tag</h1>
- * <h2>this is the heading 2 tag</h2>
- * </div>
- * 
- * 
- */
-const heading1=React.createElement("div",{id:"parent"},
-  [React.createElement("div",{id:"child"},
-    [React.createElement("h1",{id:"heading"},"this is the heading tag"),
-      React.createElement("h2",{id:"heading"},"this is the heading2 tag")]),
-    React.createElement("div",{id:"child2"},
-    [React.createElement("h1",{id:"heading"},"this is the heading tag"),
-      React.createElement("h2",{id:"heading"},"this is the heading2 tag")])]);
+  import React from "react";
+  import ReactDOM from "react-dom/client";
+  
+
+  const Header = () => {
+    return (
+      <div className="header">
+        <div className="logo">
+          <img className="image" src="https://cdn-icons-png.flaticon.com/128/3075/3075977.png" />
+        </div>
+        <div className="listitems">
+          <ul>
+            <li>Home</li>
+            <li>About Us</li>
+            <li>Contact us</li>
+            <li>Cart</li>
+          </ul>
+        </div>
+      </div>
+    );
+  };
+  const Body=()=>{
+    return (
+      <div className="body">
+        <div className="search">SEARCH</div>
+        <div className="conatiner">
+          <RestaurantContainer/> <RestaurantContainer/>
+           <RestaurantContainer/> <RestaurantContainer/> <RestaurantContainer/>
+            <RestaurantContainer/>
+
+        </div>
+
+
+
+      </div>
+
+    );
+  };
+  const RestaurantContainer=()=>{
+   return(
+     <div className="res-card" >
+      <img className="fooding" src="https://cdn-icons-png.flaticon.com/128/3075/3075977.png " alt="meganha foods"/>
+      <h4>Megahan Foods</h4>
+      <h5>north indian</h5>
+       <h5>4.4 stars</h5>
+        <h5>38 mins</h5>
+      
+
+
+
+     </div>)
+
+  };
+
+
+
+  const AppLayout=()=>{
+    return (
+      <div className="app">
+        <Header/>
+        <Body/>
+
+
+      </div>
+
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+  // it is basically creating a object not an element it have three things props attributes and elements above one
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<AppLayout/>);///object->element
 
 
 
@@ -36,12 +95,63 @@ const heading1=React.createElement("div",{id:"parent"},
 
 
 
-const heading = React.createElement(
-  "h1",
-  { id: "helloId" },  // Note the quotes around "helloId"
-  "Hello from the Namaste React"
-);
 
-// it is basically creating a object not an element it have three things props attributes and elements
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(heading1);///object->element
+
+
+
+
+
+
+
+  /**
+   * 
+   * <div id="parent">
+   * <div id ="child">
+   * <h1>this is the heading tag</h1>
+   * <h2>this is the heading 2 tag</h2>
+   * </div>
+   *  <div id ="child2">
+   * <h1>this is the heading tag</h1>
+   * <h2>this is the heading 2 tag</h2>
+   * </div>
+   * 
+   * 
+   */
+  // nested div in react including 
+  // const heading1 = React.createElement(
+  //   "div",
+  //   { id: "parent" },
+  //   React.createElement("div", { id: "child" },
+  //     React.createElement("h1", { id: "heading1" }, "This is the H1 heading"),
+  //     React.createElement("h2", { id: "heading2" }, "This is the H2 heading")
+  //   ),
+  //   React.createElement("div", { id: "child2" },  
+  //     React.createElement("h1", { id: "heading3" }, "This is another H1 heading"),
+  //     React.createElement("h2", { id: "heading4" }, "This is another H2 heading")
+  //   )
+  // );
+  // react element
+  // const heading1=(<h1 id="helloId" className="helloo">how are u</h1>);
+  // const element=<span>heheh react element in function </span>
+  // const num=10000;
+  // const Title=function(){
+  // return (<h1>react component compostion</h1> );
+  //   }
+
+  // //react  functional compoents
+  // const HeadingComponent=()=>(
+
+  //   <div>
+  //     <Title/>
+  //     {/* passing one function in another func compnent  */}
+  //     <Title></Title>
+  //     {Title()}
+
+
+  //     {heading1}
+  //     {element}
+  //      <h1>{num}</h1>
+  //     <h1>u are returning a function </h1>
+  //   </div>
+  // )
+
