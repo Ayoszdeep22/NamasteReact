@@ -24,9 +24,9 @@
       <div className="body">
         <div className="search">SEARCH</div>
         <div className="conatiner">
-          <RestaurantContainer/> <RestaurantContainer/>
-           <RestaurantContainer/> <RestaurantContainer/> <RestaurantContainer/>
-            <RestaurantContainer/>
+          <RestaurantContainer /> 
+          <RestaurantContainer resName="Meghana foods" couisne="south indian ,delhi"/>
+           
 
         </div>
 

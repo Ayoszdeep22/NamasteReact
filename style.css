@@ -1,0 +1,66 @@
+/* Simple styles for food delivery app */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Header/Navbar */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: orange;
+  padding: 10px 20px;
+}
+
+.logo .image {
+  width: 40px;
+  height: 40px;
+}
+
+.listitems ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.listitems li {
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Body */
+.body {
+  padding: 20px;
+}.res-card
+
+.search {
+  background-color: lightblue;
+  padding: 20px;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* Restaurant cards container */
+.conatiner {
+  display: flex;
+  flex-wrap: wrap;
+  
+  gap: 20px;
+}
+
+/* Restaurant cards */
+.res-card {
+  background-color: lightgray;
+  padding: 15px;
+  width: 250px;
+  border-radius: 10px;
+}
+
+.res-card .fooding {
+  width: 100%;
+  height: 120px;
+}
