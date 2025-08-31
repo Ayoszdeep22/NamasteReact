@@ -24,9 +24,9 @@
       <div className="body">
         <div className="search">SEARCH</div>
         <div className="conatiner">
-          <RestaurantContainer resName="KFC" couisne="Chicken,burger " /> 
-          {/* passin gprops to fn */}
-          <RestaurantContainer resName="Meghana foods" couisne="south indian ,delhi"/>
+          {/* <RestaurantContainer resName="KFC" couisne="Chicken,burger " />  */}
+          {/* passing props to fn */}
+          <RestaurantContainer resData={resList[0]}/>
            
 
         </div>
@@ -39,28 +39,20 @@
   };
  
   const RestaurantContainer=(props)=>{
-    const{resName,couisne}=props;
+    const{resData}=props;
+    
    return(
      <div className="res-card" >
       <img className="fooding" src="https://cdn-icons-png.flaticon.com/128/3075/3075977.png " alt="meganha foods"/>
-      <h4>{resName}</h4>
-      <h5>{couisne}</h5>
-       <h5>4.4 stars</h5>
-        <h5>38 mins</h5>
+      <h4>{resData.data.name}</h4>
+      <h5>{resData.data.cuisines.join(",")}</h5>
+       <h5>{resData.data.avgRating}</h5>
+        <h5>{resData.data.costForTwo/100} FOR TWO</h5>
+        <h5>{resData.data.deliveryTime} : Minutes</h5>
      </div>)
 
   };
-const AppLayout=()=>{
-    return (
-      <div className="app">
-        <Header/>
-        <Body/>
 
-
-      </div>
-
-    );
-  }
  const resList = [
   {
     type: 'restaurant',
@@ -2105,16 +2097,19 @@ const AppLayout=()=>{
   },
 ];
 
+const AppLayout=()=>{
+    return (
+      <div className="app">
+        <Header/>
+        <Body/>
 
 
+      </div>
 
-
-
-
-
-
-  // it is basically creating a object not an element it have three things props attributes and elements above one
-  const root = ReactDOM.createRoot(document.getElementById("root"));
+    );
+  }
+// it is basically creating a object not an element it have three things props attributes and elements above one
+const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(<AppLayout/>);///object->element
 
 
