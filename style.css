@@ -1,5 +1,4 @@
 /* Simple styles for food delivery app */
-
 * {
   margin: 0;
   padding: 0;
@@ -17,6 +16,7 @@
 .logo .image {
   width: 40px;
   height: 40px;
+  display: block;
 }
 
 .listitems ul {
@@ -34,7 +34,7 @@
 /* Body */
 .body {
   padding: 20px;
-}.res-card
+}
 
 .search {
   background-color: lightblue;
@@ -60,7 +60,11 @@
   border-radius: 10px;
 }
 
-.res-card .fooding {
+.res-card .res-logo {
   width: 100%;
   height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: block;
 }
