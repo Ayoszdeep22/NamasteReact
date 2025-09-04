@@ -1,8 +1,9 @@
+  import { LOGO_URL } from "../utils/constansts";
   const Header = () => {
     return (
       <div className="header">
         <div className="logo">
-          <img className="image" src="https://cdn-icons-png.flaticon.com/128/3075/3075977.png" />
+          <img className="image" src={LOGO_URL} />
         </div>
         <div className="listitems">
           <ul>

@@ -2,25 +2,18 @@
   import ReactDOM from "react-dom/client";
   import Header from "./compaonents/Header.jsx";
   import Body from "./compaonents/Body.jsx";
-
-
- 
- 
- 
-
-
 const AppLayout=()=>{
     return (
       <div className="app">
         <Header/>
         <Body/>
+        </div> 
+);}
 
 
-      </div>
 
-    );
-  }
-// it is basically creating a object not an element it have three things props attributes and elements above one
+
+      // it is basically creating a object not an element it have three things props attributes and elements above one
 const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(<AppLayout/>);///object->element
 
