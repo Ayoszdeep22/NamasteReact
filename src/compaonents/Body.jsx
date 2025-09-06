@@ -1,44 +1,61 @@
-import RestaurantContainer from "./RestaurantContainer";
-import resList from "../utils/mockdata";
 import { useState, useEffect } from "react";
+import RestaurantContainer from "./RestaurantContainer";
 import Shimmer from "./Shimmer";
+import resList from "../utils/mockdata";
+
 
 const Body = () => {
-  // your original state names
-  const [ListOfRestaurnats, SetListOfRestaurnats] = useState(resList);
-
-  // new state to store the full/original list
-  const [originalList, setOriginalList] = useState(resList);
-
+  // original state names
+  const [ListOfRestaurnats, SetListOfRestaurnats] = useState([]);
+  // new state for untouched full list
+  const [originalList, setOriginalList] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  // const fetchData = async () => {
-  //   const data = await fetch(
-  //     'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.624480699999999&page_type=DESKTOP_WEB_LISTING'
-  //   );
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.9218109&lng=80.94013749999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      );
+      const json = await response.json();
+      const list =
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants || [];
+             // If API yields no data, fallback to mock data
+  const finalList = list.length > 0 ? list : resList;
+        SetListOfRestaurnats(finalList);
+      setOriginalList(finalList);
+    } catch (error) {
+      console.error("Failed to fetch restaurants:", error);
+      SetListOfRestaurnats(resList);
+setOriginalList(resList);
 
-  //   const json = await data.json();
+    }
+    
+  };
 
-  //   console.log(json);
-  //   // * optional chaining
-  //   // setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
-  // };
+  if (ListOfRestaurnats.length === 0) {
+    return <Shimmer />;
+  }
 
+  const handleSearch = () => {
+    const filtered = originalList.filter((res) =>
+      res.info.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    SetListOfRestaurnats(filtered);
+  };
 
+  const handleTopRated = () => {
+    const filtered = originalList.filter(
+      (res) => parseFloat(res.info.avgRating) > 4
+    );
+    SetListOfRestaurnats(filtered);
+  };
 
-
-
-
-
-
-
-  return ListOfRestaurnats.length === 0 ? (
-    <Shimmer />
-  ) : (
+  return (
     <div className="body">
       <div className="filter">
         <div className="search">
@@ -47,39 +64,21 @@ const Body = () => {
             className="searchBox"
             placeholder="search here restaurants"
             value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
+            onChange={(e) => setSearchText(e.target.value)}
           />
-          <button
-            className="searchbtn"
-            onClick={() => {
-              const filterRestaurant = originalList.filter((res) =>
-                res.data.name.toLowerCase().includes(searchText.toLowerCase())
-              );
-              SetListOfRestaurnats(filterRestaurant);
-            }}
-          >
+          <button className="searchbtn" onClick={handleSearch}>
             Search
-          </button> 
+          </button>
         </div>
 
-        <button
-          className="filter_btn"
-          onClick={() => {
-            const filteredList = originalList.filter(
-              (res) => res.data.avgRating > 4
-            );
-            SetListOfRestaurnats(filteredList);
-          }}
-        >
+        <button className="filter_btn" onClick={handleTopRated}>
           Top rated restaurant
         </button>
       </div>
 
       <div className="conatiner">
         {ListOfRestaurnats.map((i) => (
-          <RestaurantContainer key={i.data.id} resData={i} />
+          <RestaurantContainer key={i.info.id} resData={i.info} />
         ))}
       </div>
     </div>

@@ -1,22 +1,37 @@
-const RestaurantContainer = (props) => {
-  const { resData } = props;
-  const { name, cuisines, avgRating, costForTwo, deliveryTime, cloudinaryImageId } = resData?.data;
-  
+import React from "react";
+
+const RestaurantContainer = ({ resData }) => {
+  const {
+    name,
+    cloudinaryImageId,
+    locality,
+    areaName,
+    costForTwo,
+    cuisines,
+    avgRating,
+    totalRatingsString,
+    sla
+  } = resData;
+
+  // Construct Swiggy's CDN image URL
+  const imageUrl = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`;
+
   return (
     <div className="res-card">
-      <img
-        className="res-logo"
-        src={
-          'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/' +
-          cloudinaryImageId
-        }
+      <img 
+        className="res-logo" 
+        src={imageUrl} 
         alt={name}
+        onError={(e) => {
+          e.target.src = 'https://via.placeholder.com/250x120?text=No+Image';
+        }}
       />
-      <h4>{name}</h4>
-      <h5>{cuisines.join(", ")}</h5>
-      <h5>{avgRating} stars</h5>
-      <h5>₹{costForTwo / 100} FOR TWO</h5>
-      <h5>{deliveryTime} Minutes</h5>
+      <h3>{name}</h3>
+      <p>{locality.trim()}, {areaName}</p>
+      <p>Cuisines: {cuisines?.join(", ")}</p>
+      <p>Cost: {costForTwo}</p>
+      <p>⭐ {avgRating} ({totalRatingsString})</p>
+      <p>🕒 {sla?.deliveryTime} mins</p>
     </div>
   );
 };
