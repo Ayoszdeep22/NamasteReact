@@ -1,51 +1,27 @@
  import RestaurantContainer from "./RestaurantContainer";
  import resList from "../utils/mockdata";
- import { useState } from "react";
+ import { useState,useEffect } from "react";
  const Body=()=>{
     // State varibale js 
     const [ListOfRestaurnats,SetListOfRestaurnats]=useState(resList);
-
-
-  //   // normal js variable
-  //   let ListOfRestaurnats=[
-  //       {
     
-  //   data: {
-  //     id: '121603',
-  //     name: 'Kannur Food Point',
-  //     cloudinaryImageId: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=300&h=200&fit=crop',
-  //     cuisines: ['Kerala', 'Chinese'],
-  //     avgRating: '3.9',
-  //     costForTwo: 30000,
-  //     deliveryTime: 24,
-  //   },
-  // },
-  // {
-   
-  //   data: {
-  //     id: '239',
-  //     name: 'Meghana Foods',
-  //     cloudinaryImageId: 'https://images.unsplash.com/photo-1563379091339-03246963d29a?w=300&h=200&fit=crop',
-  //     cuisines: ['Biryani', 'Andhra', 'South Indian', 'North Indian'],
-  //     avgRating: '4.4',
-  //     costForTwo: 50000,
-  //     deliveryTime: 16,
-  //   },
+    // useEffect(()=>{
+    //   fetchData();
+    // },[]);
+
+    // const fetchData=async ()=>{
+    //   const data=await fetch(
+    //       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.9218109&lng=80.94013749999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+
+    //   );
+    //   const json= await data.json();
+    //   console.log(json);
+    //   SetListOfRestaurnats(json?.data?.cards[2]?.data?.data?.cards);
+    // }
     
 
-  // },{
-  //   data: {
-  //     id: '241',
-  //     name: 'Meghana Foods',
-  //     cloudinaryImageId: 'https://images.unsplash.com/photo-1563379091339-03246963d29a?w=300&h=200&fit=crop',
-  //     cuisines: ['Biryani', 'Andhra', 'South Indian', 'North Indian'],
-  //     avgRating: '4.4',
-  //     costForTwo: 50000,
-  //     deliveryTime: 16,
-  //   },
-  // }
 
-  //   ];
+
     return (
       <div className="body">
         <div className="filter"><button className="filter_btn" onClick={()=>{
