@@ -72,8 +72,7 @@
 .filter_btn{
   cursor: pointer;
   margin-bottom: 10px;
-  height: fit-content;
-  width: fit-content;
+
 }
 .shimmer_ui{
   display: flex;
@@ -92,4 +91,19 @@
   text-align: center ;
   cursor: pointer;
 
+}
+.filter{
+  display: flex;
+  
+  
+ 
+}
+.search{
+  margin: 5px;
+  padding-right: 20px;
+ 
+}
+.searchbtn{
+  margin: 2px;
+  
 }

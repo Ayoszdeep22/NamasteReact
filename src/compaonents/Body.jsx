@@ -1,48 +1,89 @@
- import RestaurantContainer from "./RestaurantContainer";
- import resList from "../utils/mockdata";
- import { useState,useEffect } from "react";
- import Shimmer from "./Shimmer";
- const Body=()=>{
-    // State varibale js 
-    const [ListOfRestaurnats,SetListOfRestaurnats]=useState(resList);
-    
-    // useEffect(()=>{
-    //   fetchData();
-    // },[]);
+import RestaurantContainer from "./RestaurantContainer";
+import resList from "../utils/mockdata";
+import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
-    // const fetchData=async ()=>{
-    //   const data=await fetch(
-    //       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.9218109&lng=80.94013749999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+const Body = () => {
+  // your original state names
+  const [ListOfRestaurnats, SetListOfRestaurnats] = useState(resList);
 
-    //   );
-    //   const json= await data.json();
-    //   console.log(json);
-    //   SetListOfRestaurnats(json?.data?.cards[2]?.data?.data?.cards);
-    // }
-    
-    
+  // new state to store the full/original list
+  const [originalList, setOriginalList] = useState(resList);
+
+  const [searchText, setSearchText] = useState("");
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
+  // const fetchData = async () => {
+  //   const data = await fetch(
+  //     'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.624480699999999&page_type=DESKTOP_WEB_LISTING'
+  //   );
+
+  //   const json = await data.json();
+
+  //   console.log(json);
+  //   // * optional chaining
+  //   // setFilteredRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+  // };
 
 
 
-    return ListOfRestaurnats.length===0? <Shimmer/>: (
-      <div className="body">
-        <div className="filter"><button className="filter_btn" onClick={()=>{
-            const fileteredList=ListOfRestaurnats.filter((res)=>res.data.avgRating>4);
-            SetListOfRestaurnats(fileteredList);
-            
-            
-        }}>Top rated restaurant</button>
+
+
+
+
+
+
+  return ListOfRestaurnats.length === 0 ? (
+    <Shimmer />
+  ) : (
+    <div className="body">
+      <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="searchBox"
+            placeholder="search here restaurants"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button
+            className="searchbtn"
+            onClick={() => {
+              const filterRestaurant = originalList.filter((res) =>
+                res.data.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              SetListOfRestaurnats(filterRestaurant);
+            }}
+          >
+            Search
+          </button> 
         </div>
-        <div className="conatiner">
-          {/* <RestaurantContainer resName="KFC" couisne="Chicken,burger " />  */}
-          {/* passing props to fn */}
-          {/* <RestaurantContainer resData={resList[0]}/>
-           <RestaurantContainer resData={resList[1]}/> */}
-           {
-            ListOfRestaurnats.map(i=><RestaurantContainer key={i.data.id} resData={i}/>)
-           }
- </div>
- </div>);
- };
-  
-  export default Body;
+
+        <button
+          className="filter_btn"
+          onClick={() => {
+            const filteredList = originalList.filter(
+              (res) => res.data.avgRating > 4
+            );
+            SetListOfRestaurnats(filteredList);
+          }}
+        >
+          Top rated restaurant
+        </button>
+      </div>
+
+      <div className="conatiner">
+        {ListOfRestaurnats.map((i) => (
+          <RestaurantContainer key={i.data.id} resData={i} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Body;
