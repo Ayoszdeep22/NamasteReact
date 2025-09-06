@@ -75,3 +75,21 @@
   height: fit-content;
   width: fit-content;
 }
+.shimmer_ui{
+  display: flex;
+}
+.shimmer_cards{
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  background-color: aliceblue;
+}
+.login_btn{
+  width: 50px;
+  background-color:lightseagreen;
+  border: 1px black solid;
+  border-radius: 5px;
+  text-align: center ;
+  cursor: pointer;
+
+}

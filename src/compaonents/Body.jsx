@@ -1,6 +1,7 @@
  import RestaurantContainer from "./RestaurantContainer";
  import resList from "../utils/mockdata";
  import { useState,useEffect } from "react";
+ import Shimmer from "./Shimmer";
  const Body=()=>{
     // State varibale js 
     const [ListOfRestaurnats,SetListOfRestaurnats]=useState(resList);
@@ -19,10 +20,11 @@
     //   SetListOfRestaurnats(json?.data?.cards[2]?.data?.data?.cards);
     // }
     
+    
 
 
 
-    return (
+    return ListOfRestaurnats.length===0? <Shimmer/>: (
       <div className="body">
         <div className="filter"><button className="filter_btn" onClick={()=>{
             const fileteredList=ListOfRestaurnats.filter((res)=>res.data.avgRating>4);
