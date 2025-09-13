@@ -2,6 +2,10 @@
   import ReactDOM from "react-dom/client";
   import Header from "./compaonents/Header.jsx";
   import Body from "./compaonents/Body.jsx";
+  import About from "./compaonents/about.jsx";
+  import Contact from "./compaonents/Contact.jsx";
+  import Error from "./compaonents/Error.jsx";
+  import { createBrowserRouter ,RouterProvider} from "react-router-dom";
 const AppLayout=()=>{
     return (
       <div className="app">
@@ -10,12 +14,27 @@ const AppLayout=()=>{
         </div> 
 );}
 
+const appRouter=createBrowserRouter([
+  {
+    path:"/",
+    element:<AppLayout/>,
+    errorElement:<Error/>,
+  },
+  {
+    path:"/about",
+    element: <About/>,
+  },{
+    path:"/contact",
+    element: <Contact/>,
+  }
+])
+
 
 
 
       // it is basically creating a object not an element it have three things props attributes and elements above one
 const root = ReactDOM.createRoot(document.getElementById("root"));
-  root.render(<AppLayout/>);///object->element
+  root.render(<RouterProvider router={appRouter}/>);///object->element
 
 
 

@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: orange;
+  background-color: #DC143C; /* Changed to pomegranate red */
   padding: 10px 20px;
 }
 
@@ -35,6 +35,7 @@
 /* Body */
 .body {
   padding: 20px;
+  background-color: #FFF5F5; /* Very light pomegranate background */
 }
 
 /* Restaurant cards container */
@@ -47,12 +48,13 @@
 
 /* Restaurant cards */
 .res-card {
-  background-color: lightgray;
+  background-color: white; /* Changed to white for better contrast */
   padding: 15px;
   width: 250px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Added shadow for better visual */
+  box-shadow: 0 2px 8px rgba(220, 20, 60, 0.15); /* Pomegranate tinted shadow */
   transition: transform 0.2s; /* Added hover effect */
+  border: 1px solid #FFE4E1; /* Light pomegranate border */
 }
 
 .res-card:hover {
@@ -71,12 +73,12 @@
 
 .res-card h3 {
   margin-bottom: 8px; /* Added spacing */
-  color: #333; /* Added text color */
+  color: #8B0000; /* Dark pomegranate text */
 }
-
+  
 .res-card p {
   margin-bottom: 5px; /* Added spacing between paragraphs */
-  color: #666; /* Added text color */
+  color: #A0522D; /* Pomegranate brown text */
   font-size: 14px; /* Added font size */
 }
 
@@ -84,14 +86,14 @@
   cursor: pointer;
   margin-bottom: 10px;
   padding: 8px 16px; /* Added padding */
-  background-color: #007bff; /* Added background */
+  background-color: #A0522D; /* Pomegranathttp://localhost:1234e brown */
   color: white; /* Added text color */
   border: none; /* Removed border */
   border-radius: 5px; /* Added border radius */
 }
 
 .filter_btn:hover {
-  background-color: #0056b3; /* Added hover effect */
+  background-color: #8B4513; /* Darker brown on hover */
 }
 
 .shimmer_ui {
@@ -102,16 +104,21 @@
   height: 200px;
   width: 200px;
   margin: 10px;
-  background-color: aliceblue;
+  background-color: #FFE4E1; /* Light pomegranate shimmer */
 }
 
 .login_btn {
   width: 50px;
-  background-color: lightseagreen;
-  border: 1px black solid;
+  background-color: #28a745; /* Keep green as requested */
+  color: white;
+  border: 1px solid #218838;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
+}
+
+.login_btn:hover {
+  background-color: #218838;
 }
 
 .filter {
@@ -127,7 +134,7 @@
 
 .searchBox {
   padding: 8px 12px; /* Added padding */
-  border: 1px solid #ccc; /* Added border */
+  border: 1px solid #DC143C; /* Pomegranate border */
   border-radius: 4px; /* Added border radius */
   margin-right: 8px; /* Added spacing */
 }
@@ -135,7 +142,7 @@
 .searchbtn {
   margin: 2px;
   padding: 8px 16px; /* Added padding */
-  background-color: #28a745; /* Added background */
+  background-color: #DC143C; /* Pomegranate red */
   color: white; /* Added text color */
   border: none; /* Removed border */
   border-radius: 4px; /* Added border radius */
@@ -143,5 +150,5 @@
 }
 
 .searchbtn:hover {
-  background-color: #218838; /* Added hover effect */
+  background-color: #B91C3C; /* Darker pomegranate on hover */
 }
