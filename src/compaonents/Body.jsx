@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Add this import
 import RestaurantContainer from "./RestaurantContainer";
 import Shimmer from "./Shimmer";
 import resList from "../utils/mockdata";
-
 
 const Body = () => {
   // original state names
@@ -24,17 +24,15 @@ const Body = () => {
       const list =
         json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
-             // If API yields no data, fallback to mock data
-  const finalList = list.length > 0 ? list : resList;
-        SetListOfRestaurnats(finalList);
+      // If API yields no data, fallback to mock data
+      const finalList = list.length > 0 ? list : resList;
+      SetListOfRestaurnats(finalList);
       setOriginalList(finalList);
     } catch (error) {
       console.error("Failed to fetch restaurants:", error);
       SetListOfRestaurnats(resList);
-setOriginalList(resList);
-
+      setOriginalList(resList);
     }
-    
   };
 
   if (ListOfRestaurnats.length === 0) {
@@ -70,15 +68,19 @@ setOriginalList(resList);
             Search
           </button>
         </div>
-
         <button className="filter_btn" onClick={handleTopRated}>
           Top rated restaurant
         </button>
       </div>
-
       <div className="conatiner">
         {ListOfRestaurnats.map((i) => (
-          <RestaurantContainer key={i.info.id} resData={i.info} />
+          <Link 
+            key={i.info.id} 
+            to={`/restaurants/${i.info.id}`} 
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <RestaurantContainer resData={i.info} />
+          </Link>
         ))}
       </div>
     </div>

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";   
 import Shimmer from "./Shimmer.jsx";   
-import { useParams } from "react-router-dom";         
+import { useParams } from "react-router-dom";    
+import { API_URL } from "../utils/constansts.js";     
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
-  // const {resId}=useParams()
+  const {resId}=useParams();
 
   useEffect(() => {
     fetchMenu();
@@ -12,7 +13,7 @@ const RestaurantMenu = () => {
 
   const fetchMenu = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.9218109&lng=80.94013749999999&restaurantId=452096&catalog_qa=undefined&submitAction=ENTER"
+      API_URL+resId
     );
     const json = await data.json();
     console.log(json);
