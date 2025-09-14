@@ -10,6 +10,15 @@
                <div className="shimmer_cards"></div>
              <div className="shimmer_cards"></div>
               <div className="shimmer_cards"></div>
+              <div className="shimmer_cards"></div>
+             <div className="shimmer_cards"></div>
+              <div className="shimmer_cards"></div>
+               <div className="shimmer_cards"></div>
+             <div className="shimmer_cards"></div>
+              <div className="shimmer_cards"></div>
+               <div className="shimmer_cards"></div>
+             <div className="shimmer_cards"></div>
+              <div className="shimmer_cards"></div>
               
 
         </div>
