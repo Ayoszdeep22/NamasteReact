@@ -6,6 +6,7 @@ class About extends Component{
         super(props)
     }
     componentDidMount(){
+             
 
     }
     render(){
@@ -14,7 +15,7 @@ class About extends Component{
             <h2>about</h2>
             
             <UserClass name={"Ayoszdeep"} location={"Greater Noida"}/>
-            <UserClass name={"RaviMishra"} location={"Greater Noida"}/>
+            
         </div>
     )}
 }

@@ -6,7 +6,7 @@ import { API_URL } from "../utils/constansts.js";
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
   const {resId}=useParams();
-
+  
   useEffect(() => {
     fetchMenu();
   }, []);
