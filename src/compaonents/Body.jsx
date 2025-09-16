@@ -36,23 +36,24 @@ const Body = () => {
   return (
     <div className="body">
       <div className="filter">
-        <div className="search">
+        <div className="search p-4 m-4 border-s-red-300 flex items-center ">
           <input
             type="text"
-            className="searchBox"
+            className=" border-solid border-black"
             placeholder="search here restaurants"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className="searchbtn" onClick={handleSearch}>
+          <button className="searchbtn m-3 bg-amber-300 w-25 rounded-3xl" onClick={handleSearch}>
             Search
           </button>
-        </div>
-        <button className="filter_btn" onClick={handleTopRated}>
+           <button className="filter_btn m-3 bg-amber-300 w-35" onClick={handleTopRated}>
           Top rated restaurant
         </button>
+        </div>
+        
       </div>
-      <div className="conatiner">
+      <div className="conatiner flex flex-wrap">
         {listOfRestaurants.map((i) => (
           <Link
             key={i.info.id}
