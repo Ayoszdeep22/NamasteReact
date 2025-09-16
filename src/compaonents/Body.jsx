@@ -3,10 +3,17 @@ import { Link } from "react-router-dom";
 import RestaurantContainer from "./RestaurantContainer";
 import Shimmer from "./Shimmer";
 import useCard from "../utils/useCard";
+import { useOnlineStatus } from "../utils/useOnlineStatus.js";
 
 const Body = () => {
   const { listOfRestaurants, setListOfRestaurants, originalList } = useCard();
   const [searchText, setSearchText] = useState("");
+  
+  
+  const onlinestatus=useOnlineStatus();
+  if(onlinestatus===false){
+    return (<h1> you are not connected to the internet</h1>)
+  }
 
   if (listOfRestaurants.length === 0) {
     return <Shimmer />;

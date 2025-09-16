@@ -13,7 +13,8 @@ const useCard = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        MENU_API);
+        MENU_API
+      );
       const json = await response.json();
       const list =
         json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
