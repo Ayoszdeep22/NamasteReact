@@ -12,7 +12,11 @@ const Body = () => {
   
   const onlinestatus=useOnlineStatus();
   if(onlinestatus===false){
-    return (<h1> you are not connected to the internet</h1>)
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <h1 className="text-2xl text-gray-600">You are not connected to the internet</h1>
+      </div>
+    );
   }
 
   if (listOfRestaurants.length === 0) {
@@ -28,37 +32,43 @@ const Body = () => {
 
   const handleTopRated = () => {
     const filtered = originalList.filter(
-      (res) => parseFloat(res.info.avgRating) > 4
+      (res) => parseFloat(res.info.avgRating) > 3.8
     );
     setListOfRestaurants(filtered);
   };
 
   return (
-    <div className="body">
-      <div className="filter">
-        <div className="search p-4 m-4 border-s-red-300 flex items-center ">
+    <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="mb-8">
+        <div className="flex items-center gap-4 bg-white p-4 rounded-lg shadow-sm">
           <input
             type="text"
-            className=" border-solid border-black"
-            placeholder="search here restaurants"
+            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300"
+            placeholder="Search restaurants..."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className="searchbtn m-3 bg-amber-300 w-25 rounded-3xl" onClick={handleSearch}>
+          <button 
+            className="px-6 py-2 bg-amber-400 text-white rounded-lg hover:bg-amber-500 transition-colors" 
+            onClick={handleSearch}
+          >
             Search
           </button>
-           <button className="filter_btn m-3 bg-amber-300 w-35" onClick={handleTopRated}>
-          Top rated restaurant
-        </button>
+          <button 
+            className="px-6 py-2 bg-amber-400 text-white rounded-lg hover:bg-amber-500 transition-colors"
+            onClick={handleTopRated}
+          >
+            Top Rated
+          </button>
         </div>
-        
       </div>
-      <div className="conatiner flex flex-wrap">
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {listOfRestaurants.map((i) => (
           <Link
             key={i.info.id}
             to={`/restaurants/${i.info.id}`}
-            style={{ textDecoration: 'none', color: 'inherit' }}
+            className="block hover:no-underline text-current"
           >
             <RestaurantContainer resData={i.info} />
           </Link>
