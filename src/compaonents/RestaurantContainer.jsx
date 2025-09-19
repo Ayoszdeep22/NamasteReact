@@ -17,7 +17,7 @@ const RestaurantContainer = ({ resData }) => {
   const imageUrl = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`;
 
   return (
-    <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-4">
+    <div className="bg-zinc-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 p-4 text-zinc-100 border border-zinc-700 hover:border-zinc-600">
       <img 
         className="w-full h-48 object-cover rounded-lg mb-4" 
         src={imageUrl} 
@@ -27,7 +27,7 @@ const RestaurantContainer = ({ resData }) => {
         }}
       />
       <h3 className="font-bold text-lg mb-2">{name}</h3>
-      <p className="text-gray-600 mb-2">{locality.trim()}, {areaName}</p>
+      <p className="text-gray-400 mb-2">{locality.trim()}, {areaName}</p>
       <p>Cuisines: {cuisines?.join(", ")}</p>
       <p>Cost: {costForTwo}</p>
       <p>⭐ {avgRating} ({totalRatingsString})</p>
@@ -35,5 +35,18 @@ const RestaurantContainer = ({ resData }) => {
     </div>
   );
 };
+//higher order component
+export const withPromtedLabel = (RestaurantContainer) => {
+  return (props) => {
+    return (
+      <div className="relative">
+        <label className="absolute top-4 left-4 bg-black text-white px-2 py-1 rounded-lg z-10 text-sm">
+          Promoted
+        </label>
+        <RestaurantContainer {...props} />
+      </div>
+    );
+  };
+}
 
 export default RestaurantContainer;
