@@ -9,6 +9,7 @@ const RestaurantMenu = () => {
   // const [resInfo, setResInfo] = useState(null);
   const {resId}=useParams();
   const resInfo=useRestauranMenu(resId);  
+  const [showIndex,setShowIndex]=useState(false );
   
   // useEffect(() => {
   //   fetchMenu();
@@ -33,7 +34,7 @@ const RestaurantMenu = () => {
   console.log(itemCards);
   const categories=resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c=>c.card?.card?.
     ["@type"]=="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
-    console.log(categories);
+    // console.log(categories);
     
   
 
@@ -63,6 +64,8 @@ const RestaurantMenu = () => {
           <RestaurantCategory 
             key={category?.card?.card?.title}
             data={category}
+            showItems={index===showIndex?true:false}
+            setShowIndex={()=>setShowIndex(index)}
           />
         ))}
         
