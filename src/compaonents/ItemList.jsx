@@ -1,7 +1,16 @@
 
 import { CDN_URL } from "../utils/constansts";
+import { useDispatch } from "react-redux";
+import { addItem } from "../feature/CartSlice.js";
 const ItemList=({items})=>{
     console.log(items);
+    const dispatch=useDispatch();
+   
+    const handleAddItemToCart=(item)=>{
+    dispatch(addItem(item));
+}
+
+
     
     return(
         <div className="bg-zinc-800 p-4">
@@ -16,7 +25,9 @@ const ItemList=({items})=>{
                     {item?.card.info.finalPrice && (
                         <p className="text-xs text-amber-500">Final Price: ₹{item?.card.info.finalPrice/100}</p>
                     )}
-                    <div className=""><button className="bg-amber-600 p-1  w-18 font-bold rounded-lg shadow-2xl ">Cart</button>
+                    <div className=""><button className="bg-amber-600 p-1  w-18 font-bold rounded-lg shadow-2xl "
+                     onClick={()=>handleAddItemToCart(item)}>
+                        Cart</button>
                     </div>
                     
                 </div>
