@@ -4,8 +4,11 @@ import RestaurantContainer,{withPromtedLabel} from "./RestaurantContainer";
 import Shimmer from "./Shimmer";
 import useCard from "../utils/useCard";
 import { useOnlineStatus } from "../utils/useOnlineStatus.js";
+import { useContext } from "react";
+import userContext from "../utils/userContext.js";
 
 const Body = () => {
+  
   const { listOfRestaurants, setListOfRestaurants, originalList } = useCard();
   const [searchText, setSearchText] = useState("");
   console.log(listOfRestaurants);
@@ -19,6 +22,7 @@ const Body = () => {
       </div>
     );
   }
+  const {setUserInfo,loggedInUser}=useContext(userContext);
 
   if (listOfRestaurants.length === 0) {
     return <Shimmer />;
@@ -62,8 +66,17 @@ const Body = () => {
             >
               Top Rated
             </button>
+            <div>
+             <button>
+              <label className="text-white" htmlFor="">LoggedInUser : </label>
+              <input className="border  border-white" type="text" value={loggedInUser} onChange={(e)=>setUserInfo(e.target.value)} />
+              
+            </button>
           </div>
-        </div>
+           
+          </div>
+          
+        </div>  
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {listOfRestaurants.map((i) => (

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense,useEffect,useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./compaonents/Header.jsx";
 import Body from "./compaonents/Body.jsx";
@@ -10,19 +10,31 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import  {Provider} from "react-redux";
 import appStore from "./feature/appStore.js";
 import Cart from "./compaonents/cart.jsx";
+import userContext from "./utils/userContext.js";
 
 
 // Lazy-load only the Grocery component
 const Grocery = lazy(() => import("./compaonents/Grocery"));
 
 const AppLayout = () => {
+//authnetication
+const [userInfo,setUserInfo]=useState();
+const data=useEffect(()=>{
+  // make an api call and send user info
+  const user={
+    name:"Ayomide",};
+  setUserInfo(user);
+  },[]);
 
   return (
-      <Provider store={appStore}>
-    <div className="app">
+      <Provider store={appStore}> 
+      <userContext.Provider value={{loggedInUser:userInfo,setUserInfo}}>
+         <div className="app">
       <Header />
       <Outlet />
-    </div>
+    </div>  
+    </userContext.Provider>
+   
     </Provider>
   );
 };

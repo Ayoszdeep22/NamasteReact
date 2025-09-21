@@ -12,6 +12,8 @@
             },
             clearCart:(state)=>{
                 state.items.length=0;
+                // redux says that we should muttae the state or just return a new state
+                // we cant use [] as it just not modfting th estate orginl astate
             }
         }
 

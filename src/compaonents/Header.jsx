@@ -1,13 +1,15 @@
 import { LOGO_URL } from "../utils/constansts";
- import { useState} from "react";
+ import { useState,useContext } from "react";
  import { Link } from "react-router-dom";
  import {useOnlineStatus} from "../utils/useOnlineStatus";
   import { useSelector } from "react-redux";
+  import userContext from "../utils/userContext.js";
 
   const Header = () => {
     const [btnNameReact,setBtnNameReact]=useState("login");
     const onlinestatus=useOnlineStatus();
     const cartItems = useSelector((store) => store.cart.items);
+    const {loggedInUser}=useContext(userContext);
 
 
 
@@ -30,6 +32,7 @@ import { LOGO_URL } from "../utils/constansts";
               btnNameReact==="login"?setBtnNameReact("logout"):setBtnNameReact("login")
 
             }}>{btnNameReact}</button>
+            <li>{loggedInUser}</li>
           </ul>                                                                                 
         </div>
       </div>
