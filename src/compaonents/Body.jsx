@@ -22,7 +22,7 @@ const Body = () => {
       </div>
     );
   }
-  const {setUserInfo,loggedInUser}=useContext(userContext);
+  const {loggedInUser,setUserInfo}=useContext(userContext);
 
   if (listOfRestaurants.length === 0) {
     return <Shimmer />;
@@ -66,13 +66,19 @@ const Body = () => {
             >
               Top Rated
             </button>
-            <div>
-             <button>
-              <label className="text-white" htmlFor="">LoggedInUser : </label>
-              <input className="border  border-white" type="text" value={loggedInUser} onChange={(e)=>setUserInfo(e.target.value)} />
-              
-            </button>
-          </div>
+           <div className="flex items-center gap-2">
+  <label className="text-white" htmlFor="userInput">
+    LoggedInUser:
+  </label>
+  <input 
+    id="userInput"
+    className="border border-white px-2 py-1 text-black" 
+    type="text" 
+    value={loggedInUser} // Provide fallback empty string
+    onChange={(e) => setUserInfo(e.target.value)} 
+  />
+</div>
+
            
           </div>
           

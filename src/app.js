@@ -18,17 +18,17 @@ const Grocery = lazy(() => import("./compaonents/Grocery"));
 
 const AppLayout = () => {
 //authnetication
-const [userInfo,setUserInfo]=useState();
+const [userInfo,setUserInfo]=useState("");
 const data=useEffect(()=>{
   // make an api call and send user info
   const user={
-    name:"Ayomide",};
+    name:"Ayomide"};
   setUserInfo(user);
   },[]);
 
   return (
       <Provider store={appStore}> 
-      <userContext.Provider value={{loggedInUser:userInfo,setUserInfo}}>
+      <userContext.Provider value={{loggedInUser:userInfo?.name,setUserInfo}}>
          <div className="app">
       <Header />
       <Outlet />
