@@ -70,13 +70,12 @@ const Body = () => {
   <label className="text-white" htmlFor="userInput">
     LoggedInUser:
   </label>
-  <input 
-    id="userInput"
-    className="border border-white px-2 py-1 text-black" 
-    type="text" 
-    value={loggedInUser} // Provide fallback empty string
-    onChange={(e) => setUserInfo(e.target.value)} 
-  />
+  <input
+  type="text"
+  value={loggedInUser}
+  onChange={(e) => setUserInfo(e.target.value)}
+  className="px-4 py-2 rounded border bg-zinc-700 text-zinc-100"
+/>
 </div>
 
            

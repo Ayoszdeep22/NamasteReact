@@ -1,41 +1,67 @@
 import { LOGO_URL } from "../utils/constansts";
- import { useState,useContext } from "react";
- import { Link } from "react-router-dom";
- import {useOnlineStatus} from "../utils/useOnlineStatus";
-  import { useSelector } from "react-redux";
-  import userContext from "../utils/userContext.js";
+import { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { useOnlineStatus } from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
+import userContext from "../utils/userContext.js";
 
-  const Header = () => {
-    const [btnNameReact,setBtnNameReact]=useState("login");
-    const onlinestatus=useOnlineStatus();
-    const cartItems = useSelector((store) => store.cart.items);
-    const {loggedInUser}=useContext(userContext);
+const Header = () => {
+  const [btnNameReact, setBtnNameReact] = useState("Login");
+  const onlinestatus = useOnlineStatus();
+  const cartItems = useSelector((store) => store.cart.items);
+  const { loggedInUser } = useContext(userContext);
 
+  return (
+    <div className="flex items-center justify-between h-20 bg-zinc-900 px-8 shadow-lg border-b-3 border-amber-600">
+      <Link to="/">
+        <img className="w-16" src={LOGO_URL} alt="Logo" />
+      </Link>
 
+      <ul className="flex items-center gap-8 text-zinc-100">
+        <li className="flex items-center gap-1">
+          {onlinestatus 
+            ? <span className="text-green-600 animate-pulse">●</span> 
+            : <span className="text-red-400">●</span>}
+          <span className="text-sm">Online</span>
+        </li>
 
+        <li>
+          <Link to="/" className="hover:text-amber-400 transition">Home</Link>
+        </li>
+        <li>
+          <Link to="/about" className="hover:text-amber-400 transition">About</Link>
+        </li>
+        <li>
+          <Link to="/contact" className="hover:text-amber-400 transition">Contact</Link>
+        </li>
+        <li>
+          <Link to="/grocery" className="hover:text-amber-400 transition">Grocery</Link>
+        </li>
 
-    return (
-      <div className="flex shadow-sm justify-between h-20 bg-red-300 ">
-        <div className="logo">
-          <img className="w-16" src={LOGO_URL} />
-        </div>
-        <div className="flex items-center">   
-          <ul className="flex gap-10 p-3 m-2 ">
-            <li>Online Status :{onlinestatus ?" green":"red"}
-            </li>                                                                  
-            <li><Link to="/">Home</Link></li>
-            <li><Link to ="/about">About Us</Link></li>
-            <li><Link to="/contact">Contact us</Link></li>
-            <li><Link to="/grocery">Grocery</Link></li>
-            <li className="text-2xl font-bold"><Link to="/cart">🛒({cartItems.length} items )</Link></li>
-            <button className="bg-green-500 w-15 hover:bg-amber-500" onClick={()=>{
-              btnNameReact==="login"?setBtnNameReact("logout"):setBtnNameReact("login")
+        <li>
+          <Link
+            to="/cart"
+            className="flex items-center gap-2 text-amber-400 hover:text-amber-300 transition text-lg"
+          >
+            🛒 <span>({cartItems.length})</span>
+          </Link>
+        </li>
 
-            }}>{btnNameReact}</button>
-            <li>{loggedInUser}</li>
-          </ul>                                                                                 
-        </div>
-      </div>
-    );                                                                                                                                                  
-  };
-  export default Header;
+        <li>
+          <button
+            onClick={() => setBtnNameReact(btnNameReact === "Login" ? "Logout" : "Login")}
+            className="bg-amber-500 text-zinc-900 px-4 py-1 rounded-md font-medium hover:bg-amber-400 transition"
+          >
+            {btnNameReact}
+          </button>
+        </li>
+
+        <li className="font-semibold text-zinc-100">
+          {loggedInUser || "Guest"}
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+export default Header;

@@ -16,28 +16,30 @@ import userContext from "./utils/userContext.js";
 // Lazy-load only the Grocery component
 const Grocery = lazy(() => import("./compaonents/Grocery"));
 
+// In AppLayout (e.g. App.jsx)
 const AppLayout = () => {
-//authnetication
-const [userInfo,setUserInfo]=useState("");
-const data=useEffect(()=>{
-  // make an api call and send user info
-  const user={
-    name:"Ayomide"};
-  setUserInfo(user);
-  },[]);
+  const [userName, setUserName] = useState("Guest");
+
+  useEffect(() => {
+    // Simulate fetching user data
+    setUserName("Ayomide");
+  }, []);
 
   return (
-      <Provider store={appStore}> 
-      <userContext.Provider value={{loggedInUser:userInfo?.name,setUserInfo}}>
-         <div className="app">
-      <Header />
-      <Outlet />
-    </div>  
-    </userContext.Provider>
-   
+    <Provider store={appStore}>
+      <userContext.Provider
+        value={{
+          loggedInUser: userName,
+          setUserInfo: setUserName
+        }}
+      >
+        <Header />
+        <Outlet />
+      </userContext.Provider>
     </Provider>
   );
 };
+
 
 const appRouter = createBrowserRouter([
   {
