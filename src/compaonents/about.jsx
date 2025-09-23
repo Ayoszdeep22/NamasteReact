@@ -1,34 +1,47 @@
+import React, { useState, useEffect, useContext } from "react";
+import UserClass from "./UserClass.jsx";
+import UserContext from "../utils/userContext.js";
 
+export default function About() {
+  const { loggedInUser, setUserInfo } = useContext(UserContext);
 
-import UserClass from "./UserClass";
-import { Component} from "react";
-import userContext from "../utils/userContext.js";
+  const [status, setStatus] = useState("idle");
 
-class About extends Component {
-  constructor(props) {
-    super(props);
-  }
+  useEffect(() => {
+    setStatus("loading");
+    fetch("/api/profile/status")
+      .then((res) => res.json())
+      .then((data) => setStatus(data.status))
+      .catch(() => setStatus("error"));
+  }, []);
 
-  componentDidMount() {}
-
-  render() {
-    return (
-      <div className="p-6 bg-gray-50 rounded-lg shadow-md">
-        <h2 className="text-3xl font-semibold mb-4 text-gray-800">About</h2>
-        <UserClass
-          name={"Ayoszdeep"}
-          location={"Greater Noida"}
-          className="text-lg text-gray-700"
-        />
-        <div>
-          Logged in user:
-         =<userContext.Consumer>
-            {({ loggedInUser }) => <h1 className="font-bold">{loggedInUser}</h1>}
-          </userContext.Consumer>
-        </div>
-      </div>
-    );
-  }
+  return (
+    <div className="max-w-3xl mx-auto p-8 bg-white rounded-lg shadow-lg space-y-6">
+      <header className="flex items-center justify-between">
+        <h1 className="text-4xl font-bold text-gray-900">About Me</h1>
+        <button
+          className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+onClick={() =>
+  setUserInfo((prev) => (prev === "Guest" ? "Ayoszdeep" : "Guest"))
 }
+        >
+          Switch User
+        </button>
+      </header>
 
-export default About;
+      <section>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Profile Status</h2>
+        
+      </section>
+
+      <section>
+        <UserClass username="ayoszdeep" />
+      </section>
+
+      <footer className="text-gray-600">
+        Currently logged in as:{" "}
+        <span className="font-medium text-gray-800">{loggedInUser}</span>
+      </footer>
+    </div>
+  );
+}

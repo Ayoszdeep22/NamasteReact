@@ -1,6 +1,8 @@
 import React from "react";
 
 const RestaurantContainer = ({ resData }) => {
+  console.log(resData);
+  
   const {
     name,
     cloudinaryImageId,

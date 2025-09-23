@@ -43,7 +43,7 @@ const Header = () => {
             to="/cart"
             className="flex items-center gap-2 text-amber-400 hover:text-amber-300 transition text-lg"
           >
-            🛒 <span>({cartItems.length})</span>
+            🛒 <span>CART: ({cartItems.length})</span>
           </Link>
         </li>
 

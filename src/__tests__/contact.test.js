@@ -1,16 +1,15 @@
 import "@testing-library/jest-dom"
 import { render, screen } from "@testing-library/react";
 import Contact from "../compaonents/Contact";
-
-
-test("contact is loading", () => {
+describe("testing the conatct loading",()=>{
+  it("contact is loading", () => {
   // Render the contact component
   render(<Contact />);
   const heading = screen.getByRole("heading");  
   // Assertion
   expect(heading).toBeInTheDocument();
 });
-test("Button is loading", () => {
+it("Button is loading", () => {
   // Render the contact component
   render(<Contact />);
   const Button = screen.getByRole("button");
@@ -19,20 +18,26 @@ test("Button is loading", () => {
   // Assertion
   expect(Button).toBeInTheDocument();
 });
-test("imput is loading  ", () => {
+it("imput is loading  ", () => {
   // Render the contact component
   render(<Contact />);
-  const imputName = screen.getByPlaceholderText("name")
+  const imputName = screen.getByPlaceholderText("Your Name")
   
 
   
   expect(imputName).toBeInTheDocument();
 });
-test("two input feilds are loaded or not ",()=>{
+it("two input feilds are loaded or not ",()=>{
      render(<Contact />);
      const inputBoxes=screen.getAllByRole("textbox");
-     expect(inputBoxes.length).toBeLessThanOrEqual(2);
+     /// it will return the jsx element 
+     expect(inputBoxes.length).toBe(3);
 
 
 });
+
+})
+
+
+
 
