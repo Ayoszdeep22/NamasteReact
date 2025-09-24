@@ -21,7 +21,7 @@ const Cart = () => {
             {cartItems.length === 0 ? (
                 <div className="text-xl text-gray-600 p-10 bg-gray-50 rounded-lg shadow-sm">
                     <h2 className="font-bold mb-2">Your cart is empty!</h2>
-                    <p className="mt-2">Add some delicious items to your cart.</p>
+                   
                 </div>
             ) : (
                 <div className="bg-white rounded-lg shadow-md">

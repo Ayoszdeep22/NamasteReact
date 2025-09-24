@@ -19,7 +19,7 @@ const RestaurantContainer = ({ resData }) => {
   const imageUrl = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`;
 
   return (
-    <div className="bg-zinc-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 p-4 text-zinc-100 border border-zinc-700 hover:border-zinc-600">
+    <div  data-testid="resCard" className="bg-zinc-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 p-4 text-zinc-100 border border-zinc-700 hover:border-zinc-600">
       <img 
         className="w-full h-48 object-cover rounded-lg mb-4" 
         src={imageUrl} 

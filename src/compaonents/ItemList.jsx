@@ -15,7 +15,7 @@ const ItemList=({items})=>{
     return(
         <div className="bg-zinc-800 p-4">
             {items.map(item=>
-                <div key={item?.card.info.id} className="p-4 border-b border-zinc-700 last:border-0" >
+                <div  data-testid="foodItems" key={item?.card.info.id} className="p-4 border-b border-zinc-700 last:border-0" >
                       <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${item.card.info.imageId}`} />
                     <div className="flex justify-between mb-2">
                         <span className="font-medium text-lg text-zinc-100">{item.card.info.name}</span>

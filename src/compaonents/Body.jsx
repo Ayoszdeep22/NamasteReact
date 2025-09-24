@@ -49,6 +49,7 @@ const Body = () => {
           <div className="flex items-center gap-4 bg-zinc-800 p-4 rounded-lg shadow-md border border-zinc-700">
             <input
               type="text"
+              data-testid="searchInput"
               className="flex-1 px-4 py-2 border border-zinc-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400 bg-zinc-700 text-zinc-100 placeholder-zinc-400"
               placeholder="Search restaurants..."
               value={searchText}
